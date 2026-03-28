@@ -10,7 +10,7 @@ import org.enrycoweiser.showmethedata.standard.StandardEntity;
 @Getter
 @Setter
 @Entity
-@Table(name = "bombiste", schema = "backend")
+@Table(name = "bombsite", schema = "backend")
 public class Bombsite extends StandardEntity {
     @Column(nullable = false)
     private String map;
