@@ -66,7 +66,7 @@ public class QueryDtoRepository {
         sql.append("    COALESCE(p.wins, 0) as wins, ");
         sql.append("    COALESCE(p.plants, 0) as plants, ");
         sql.append("    COALESCE(r.rounds, 0) as rounds ");
-        sql.append("FROM operator op ");
+        sql.append("FROM backend.operator op ");
         sql.append("LEFT JOIN backend.picks p ON p.operator_id = op.id ");
         sql.append("LEFT JOIN backend.rounds r ON r.operator_id = op.id ");
         sql.append("ORDER BY op.role, op.name;");
