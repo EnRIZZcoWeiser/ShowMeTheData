@@ -4,7 +4,11 @@ import org.enrycoweiser.showmethedata.dto.request.MapStatsRequest;
 import org.enrycoweiser.showmethedata.dto.response.MapStatsResponse;
 import org.enrycoweiser.showmethedata.service.MapStatsService;
 import org.enrycoweiser.showmethedata.standard.StandardController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/api/map_stats")
 public class MapStatsController implements StandardController<MapStatsRequest, MapStatsResponse> {
 
     private final MapStatsService service;

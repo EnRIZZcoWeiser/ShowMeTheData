@@ -10,9 +10,11 @@ import org.enrycoweiser.showmethedata.repository.RoundRepository;
 import org.enrycoweiser.showmethedata.repository.custom.MyBombsiteRepository;
 import org.enrycoweiser.showmethedata.standard.StandardService;
 import org.enrycoweiser.showmethedata.statics.MapStatsStatic;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MapStatsService implements StandardService<MapStatsRequest, MapStatsResponse> {
 
     private final RoundRepository roundRepository;
