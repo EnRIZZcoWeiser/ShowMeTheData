@@ -21,8 +21,8 @@ public class Operator extends StandardEntity {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @Column(nullable = false, unique = true)
-    private LocalDate from;
+    @Column(nullable = false)
+    private LocalDate release;
 
     public boolean equals(Object o) {
         if(this == o) {
