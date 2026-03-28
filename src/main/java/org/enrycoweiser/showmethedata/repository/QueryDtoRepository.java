@@ -23,12 +23,12 @@ public class QueryDtoRepository {
         sql.append("        COUNT(*) AS picks, ");
         sql.append("        SUM(CASE WHEN p.id_team = r.id_team_win THEN 1 ELSE 0 END) AS wins, ");
         sql.append("        SUM(CASE WHEN r.plant = 'Y' THEN 1 ELSE 0 END) AS plants ");
-        sql.append("    FROM operator_pick p ");
-        sql.append("    JOIN team t on p.id_team = t.id ");
-        sql.append("    JOIN operator op ON op.id = p.id_operator ");
-        sql.append("    JOIN round r ON r.id = p.id_round ");
-        sql.append("    JOIN played_map pm ON pm.id = r.id_map ");
-        sql.append("    JOIN match m ON m.id = pm.id_match ");
+        sql.append("    FROM backend.operator_pick p ");
+        sql.append("    JOIN backend.team t on p.id_team = t.id ");
+        sql.append("    JOIN backend.operator op ON op.id = p.id_operator ");
+        sql.append("    JOIN backend.round r ON r.id = p.id_round ");
+        sql.append("    JOIN backend.played_map pm ON pm.id = r.id_map ");
+        sql.append("    JOIN backend.match m ON m.id = pm.id_match ");
         sql.append("    WHERE 1=1 ");
 
         if(team != null && !team.isEmpty())     sql.append(" AND t.code = :teamCode ");
@@ -42,12 +42,12 @@ public class QueryDtoRepository {
         sql.append("    SELECT ");
         sql.append("        op.id AS operator_id, ");
         sql.append("        COUNT(r.id) AS rounds ");
-        sql.append("    FROM operator op ");
-        sql.append("    JOIN round r ON 1=1 ");
-        sql.append("    JOIN played_map pm ON pm.id = r.id_map ");
-        sql.append("    JOIN match m ON m.id = pm.id_match ");
-        sql.append("    JOIN team ta ON ta.id = m.id_team_a ");
-        sql.append("    JOIN team tb ON tb.id = m.id_team_b ");
+        sql.append("    FROM backend.operator op ");
+        sql.append("    JOIN backend.round r ON 1=1 ");
+        sql.append("    JOIN backend.played_map pm ON pm.id = r.id_map ");
+        sql.append("    JOIN backend.match m ON m.id = pm.id_match ");
+        sql.append("    JOIN backend.team ta ON ta.id = m.id_team_a ");
+        sql.append("    JOIN backend.team tb ON tb.id = m.id_team_b ");
         sql.append("    WHERE m.date >= op.release ");
 
         if(team != null && !team.isEmpty()) {
@@ -67,8 +67,8 @@ public class QueryDtoRepository {
         sql.append("    COALESCE(p.plants, 0) as plants, ");
         sql.append("    COALESCE(r.rounds, 0) as rounds ");
         sql.append("FROM operator op ");
-        sql.append("LEFT JOIN picks p ON p.operator_id = op.id ");
-        sql.append("LEFT JOIN rounds r ON r.operator_id = op.id ");
+        sql.append("LEFT JOIN backend.picks p ON p.operator_id = op.id ");
+        sql.append("LEFT JOIN backend.rounds r ON r.operator_id = op.id ");
         sql.append("ORDER BY op.role, op.name;");
 
         /* DATE FORMATTER */
