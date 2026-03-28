@@ -52,6 +52,36 @@ public class MapStatsTile {
         plantWin++;
     }
 
+    public String getWinPerc() {
+        return getPerc(getWin(), getRound());
+    }
+
+    public String getEntryKillPerc() {
+        return getPerc(getEntryKill(), getRound());
+    }
+
+    public String getEntryKillWinPerc() {
+        return getPerc(getEntryKillWin(), getEntryKill());
+    }
+
+    public String getEntryDeathWinPerc() {
+        return getPerc(getEntryDeathWin(), (getRound() - getEntryKill()));
+    }
+
+    public String getPlantPerc() {
+        return getPerc(getPlant(), getRound());
+    }
+
+    public String getPlantWinPerc() {
+        return getPerc(getPlantWin(), getPlant());
+    }
+
+
+
+
+
+
+
     public String getPerc(int number1, int number2) {
         if(number2 == 0) {
             return " - ";

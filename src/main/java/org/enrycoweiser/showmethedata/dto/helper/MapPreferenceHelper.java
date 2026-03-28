@@ -143,6 +143,10 @@ public class MapPreferenceHelper {
         return sum;
     }
 
+    public double getValue() {
+        return calcValue();
+    }
+
     /* OTHERS */
     public double calcValue() {
         int numberBO1 = getNumberBO1();
