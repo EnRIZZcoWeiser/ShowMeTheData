@@ -33,7 +33,7 @@ public class Region extends StandardEntity {
             return true;
         }
 
-        if(o == null || getClass() != o.getClass()) {
+        if(!(o instanceof Region)) {
             return false;
         }
 

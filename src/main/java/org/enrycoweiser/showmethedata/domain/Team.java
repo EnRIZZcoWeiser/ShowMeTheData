@@ -33,7 +33,7 @@ public class Team extends StandardEntity {
             return true;
         }
 
-        if(o == null || getClass() != o.getClass()) {
+        if(!(o instanceof Team)) {
             return false;
         }
 
