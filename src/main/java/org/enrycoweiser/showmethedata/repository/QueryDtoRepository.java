@@ -29,10 +29,11 @@ public class QueryDtoRepository {
         sql.append("    JOIN backend.round r ON r.id = p.id_round ");
         sql.append("    JOIN backend.played_map pm ON pm.id = r.id_map ");
         sql.append("    JOIN backend.match m ON m.id = pm.id_match ");
+        sql.append("    JOIN backend.event e ON e.id = m.id_event ");
         sql.append("    WHERE 1=1 ");
 
         if(team != null && !team.isEmpty())     sql.append(" AND t.code = :teamCode ");
-        if(event != null && !event.isEmpty())   sql.append(" AND m.event.code = :event ");
+        if(event != null && !event.isEmpty())   sql.append(" AND e.code = :event ");
         if(fromDate != null)                    sql.append(" AND m.date >= :fromDate ");
         if(toDate != null)                      sql.append(" AND m.date <= :toDate ");
 
@@ -48,13 +49,14 @@ public class QueryDtoRepository {
         sql.append("    JOIN backend.match m ON m.id = pm.id_match ");
         sql.append("    JOIN backend.team ta ON ta.id = m.id_team_a ");
         sql.append("    JOIN backend.team tb ON tb.id = m.id_team_b ");
+        sql.append("    JOIN backend.event e ON e.id = m.id_event ");
         sql.append("    WHERE m.date >= op.release ");
 
         if(team != null && !team.isEmpty()) {
             sql.append("AND ((ta.code = :teamCode AND op.role = r.team_a_role) ");
             sql.append("OR (tb.code = :teamCode AND op.role = r.team_b_role)) ");
         }
-        if(event != null)    sql.append(" AND m.event.code = :event ");
+        if(event != null && !event.isEmpty())    sql.append(" AND e.code = :event ");
         if(fromDate != null) sql.append(" AND m.date >= :fromDate ");
         if(toDate != null)   sql.append(" AND m.date <= :toDate ");
 
